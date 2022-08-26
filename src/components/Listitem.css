@@ -5,3 +5,9 @@
 .undone {
   text-decoration: none;
 }
+
+.deletebutton {
+  padding: 0;
+  margin-left: 10px;
+  color:red;
+}
