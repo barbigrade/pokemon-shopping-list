@@ -1,8 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Form from "./components/Form";
-import Listitem from "./components/Listitem"
-
+import Listitem from "./components/Listitem";
 
 function App() {
   const list = [
@@ -36,8 +35,12 @@ function App() {
       <ul>
         {shoppingList.map((listItem) => {
           return (
-            <Listitem key={listItem.id} item={listItem} onRemoveListItem={removeListItem} />
-          )
+            <Listitem
+              key={listItem.id}
+              item={listItem}
+              onRemoveListItem={removeListItem}
+            />
+          );
         })}
       </ul>
     </div>
