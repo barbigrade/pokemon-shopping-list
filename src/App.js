@@ -13,9 +13,18 @@ function App() {
 
   const [shoppingList, setShoppingList] = useState(list);
 
+  function addListItem(newListItem) {
+    setShoppingList(newListItem, ...shoppingList);
+  }
+
+  function removeListItem(listItem) {
+    setShoppingList(shoppingList.filter((item) => item.id !== listItem.id));
+  }
+
   return (
     <div className="App">
       <h1>Pokemon Shopping List</h1>
+      <Form onAddListItem={addListItem} />
 
       <ul>
         {shoppingList.map((listItem) => (

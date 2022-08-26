@@ -1,8 +1,10 @@
-export default function Form() {
+export default function Form(onAddListItem) {
 
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
+        const input = form.name.value;
+        const newListItem = { name: input, id: };
     }
 
     return (
@@ -12,7 +14,6 @@ export default function Form() {
             <button>Add item</button>
         </form>
     )
-
 
 
 
