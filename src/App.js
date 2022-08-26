@@ -34,7 +34,11 @@ function App() {
       {/* On add list item is the prop name that leads back to the addlistitem
       function*/}
       <ul>
-        <Listitem listitems={shoppingList} onRemoveListItem={removeListItem}/>
+        {shoppingList.map((listItem) => {
+          return (
+            <Listitem key={listItem.id} item={listItem} onRemoveListItem={removeListItem} />
+          )
+        })}
       </ul>
     </div>
   );
