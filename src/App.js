@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Form from './components/Form'
 
 function App() {
   const list = [
@@ -15,9 +16,10 @@ function App() {
   return (
     <div className="App">
       <h1>Pokemon Shopping List</h1>
+
       <ul>
         {shoppingList.map((listItem) => (
-          <li>
+          <li key={listItem.id}>
             <input type="checkbox" />
             {listItem.name}
           </li>
