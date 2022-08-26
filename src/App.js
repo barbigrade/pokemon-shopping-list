@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Form from "./components/Form";
 
 function App() {
   const list = [
@@ -12,12 +13,27 @@ function App() {
 
   const [shoppingList, setShoppingList] = useState(list);
 
+  /*This is a template*/
+  function addListItem(listItem) {
+    setShoppingList([listItem, ...shoppingList]);
+  }
+  /*This is a template*/
+
+  const listLength = shoppingList.length;
+
+  function removeListItem(listItem) {
+    setShoppingList(shoppingList.filter((item) => item.id !== listItem.id));
+  }
+
   return (
     <div className="App">
       <h1>Pokemon Shopping List</h1>
+      <Form onAddListItem={addListItem} length={listLength} />
+      {/* On add list item is the prop name that leads back to the addlistitem
+      function*/}
       <ul>
         {shoppingList.map((listItem) => (
-          <li>
+          <li key={listItem.id}>
             <input type="checkbox" />
             {listItem.name}
           </li>
