@@ -19,7 +19,7 @@ function App() {
     setShoppingList([listItem, ...shoppingList]);
   }
 
-  const listLength = shoppingList.length;
+  //const listLength = shoppingList.length;
 
   // This is the template.
   function removeListItem(listItem) {
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <h1>Pokemon Shopping List</h1>
-      <Form onAddListItem={addListItem} length={listLength} />
+      <Form onAddListItem={addListItem} />
       {/* On add list item is the prop name that leads back to the addlistitem
       function*/}
       <ul>
