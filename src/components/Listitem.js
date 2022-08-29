@@ -16,7 +16,7 @@ export default function Listitem({ item, onRemoveListItem }) {
     <li className={`${isDone ? "done" : "undone"}`}>
       <input onChange={handleChange} type="checkbox" />
       {item.name}
-      <button onClick={handleClick}>X</button>
+      <button className="deletebutton" onClick={handleClick}>X</button>
     </li>
   );
 }
