@@ -4,13 +4,10 @@
 
 .undone {
   text-decoration: none;
-<<<<<<< HEAD
-=======
 }
 
 .deletebutton {
   padding: 0;
   margin-left: 10px;
-  color:red;
->>>>>>> main
+  color: red;
 }
