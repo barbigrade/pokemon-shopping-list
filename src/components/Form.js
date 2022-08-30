@@ -1,10 +1,11 @@
-export default function Form({ onAddListItem, length }) {
+import { nanoid } from 'nanoid'
+
+export default function Form({ onAddListItem }) {
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const input = form.name.value;
-    console.log(input);
-    const newListItem = { name: input, id: length + 1 };
+    const newListItem = { name: input, id: nanoid(), isDone: false };
     onAddListItem(newListItem);
   }
 
