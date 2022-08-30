@@ -1,18 +1,36 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Listitem from "./components/Listitem";
+import { renderIntoDocument } from "react-dom/test-utils";
 
 function App() {
   const list = [
-    { name: "Potion", id: "1" },
-    { name: "Pokeball", id: "2" },
-    { name: "Para Healer", id: "3" },
-    { name: "Superball", id: "4" },
-    { name: "Masterball", id: "5" },
+    { name: "Potion", id: "1", isDone: true },
+    { name: "Pokeball", id: "2", isDone: false },
+    { name: "Para Healer", id: "3", isDone: false },
+    { name: "Superball", id: "4", isDone: false },
+    { name: "Masterball", id: "5", isDone: false },
   ];
 
-  const [shoppingList, setShoppingList] = useState(list);
+  const [shoppingList, setShoppingList] = useState(loadFromLocal() || list);
+  useEffect(() => {
+    localStorage.setItem('_items', JSON.stringify(shoppingList));
+  }, [shoppingList]);
+
+  function loadFromLocal() {
+    return JSON.parse(localStorage.getItem('_items'));
+  }
+
+  function toggleItem(shoppingId) {
+    const updatedItems = shoppingList.map((item) => {
+      if (item.id === shoppingId) {
+        item.isDone = !item.isDone;
+      }
+      return item;
+    });
+    setShoppingList(updatedItems);
+  }
 
   /*This is a template*/
   function addListItem(listItem) {
@@ -39,6 +57,8 @@ function App() {
               key={listItem.id}
               item={listItem}
               onRemoveListItem={removeListItem}
+              onToggleItem={toggleItem}
+              isChecked={listItem.isDone}
             />
           );
         })}
