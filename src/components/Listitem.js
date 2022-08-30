@@ -1,22 +1,22 @@
-import { useState } from "react";
 import "./Listitem.css";
 
-export default function Listitem({ item, onRemoveListItem }) {
-  function handleClick() {
-    onRemoveListItem(item);
-  }
+export default function Listitem({ id, item, onRemoveListItem, isDone, onToggleItem }) {
+  // function handleClick() {
+  //   onRemoveListItem(item);
+  // }
 
-  const [isDone, setIsDone] = useState(false);
-
-  function handleChange() {
-    setIsDone(!isDone);
-  }
+  // function handleChange() {
+  //   setIsDone(!isDone);
+  // }
 
   return (
     <li className={`${isDone ? "done" : "undone"}`}>
-      <input onChange={handleChange} type="checkbox" />
+      <input
+        onChange={() => onToggleItem(id)}
+        type="checkbox"
+        checked={isDone} />
       {item.name}
-      <button className="deletebutton" onClick={handleClick}>X</button>
+      <button className="deletebutton" onClick={() => onRemoveListItem(id)}>X</button>
     </li>
   );
 }
