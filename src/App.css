@@ -2,9 +2,24 @@
   text-align: center;
 }
 
+img {
+  max-width: 750px;
+  height: 8rem;
+}
+
+h1 {
+  color: #3A5FAA;
+}
+
 ul {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 30%;
   list-style: none;
+  font-size: x-large;
   border: 2px solid black;
   text-align: left;
-  padding-left:calc(50% - 40px);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 10px;
 }
