@@ -2,8 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Listitem from "./components/Listitem";
-import { renderIntoDocument } from "react-dom/test-utils";
-import { urlAlphabet } from "nanoid";
+import ShopItem from "./components/ShopItem";
 
 function App() {
   const list = [
@@ -14,13 +13,27 @@ function App() {
     { name: "Masterball", id: "5", isDone: false },
   ];
 
+  const apiURL = "https://pokeapi.co/api/v2/item/";
+  const [itemList, setItemList] = useState([]);
+
+  useEffect(() => {
+    fetch(apiURL)
+      .then((response) => response.json())
+      .then((data) => setItemList(data.results))
+  }, []
+  )
+
   const [shoppingList, setShoppingList] = useState(loadFromLocal() || list);
   useEffect(() => {
     localStorage.setItem('_items', JSON.stringify(shoppingList));
   }, [shoppingList]);
 
   function loadFromLocal() {
-    return JSON.parse(localStorage.getItem('_items'));
+    try {
+      return JSON.parse(localStorage.getItem('_items'));
+    } catch (error) {
+      console.log("Das war mal wieder ein Schuss in den Ooooooofeeeeeeen!");
+    }
   }
 
   function toggleItem(shoppingId) {
@@ -42,7 +55,6 @@ function App() {
 
   // This is the template.
   function removeListItem(id) {
-    console.log(id);
     setShoppingList(shoppingList.filter((item) => item.id !== id));
   }
 
@@ -53,7 +65,7 @@ function App() {
       <Form onAddListItem={addListItem} />
       {/* On add list item is the prop name that leads back to the addlistitem
       function*/}
-      <ul>
+      <ul className="shoppingcart">
         {shoppingList.map((listItem) => {
           return (
             <Listitem
@@ -65,6 +77,13 @@ function App() {
               id={listItem.id}
             />
           );
+        })}
+      </ul>
+      <ul className="inventory">
+        {itemList.map((item) => {
+          return (
+            <ShopItem key={item.name} name={item.name} shopInventory={itemList} itemURL={item.url} onAddListItem={addListItem} />
+          )
         })}
       </ul>
     </div>
