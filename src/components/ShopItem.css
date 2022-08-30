@@ -1,0 +1,29 @@
+.inventoryitem {
+  display: grid;
+  background-color: white;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  border: black solid 2px;
+  box-shadow: 5px 5px 6px 3px grey;
+}
+
+img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+}
+
+.itemname {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.itemprice {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+button {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}

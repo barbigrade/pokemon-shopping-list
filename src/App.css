@@ -11,7 +11,7 @@ h1 {
   color: #3A5FAA;
 }
 
-ul {
+.shoppingcart {
   display: flex;
   flex-direction: column;
   margin: 2rem 30%;
@@ -22,4 +22,12 @@ ul {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-radius: 10px;
+}
+
+.inventory {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 10rem;
 }

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
 body {
+  box-sizing: border-box;
   min-height: 100vh;
   margin: 0;
   min-width: 750px;
