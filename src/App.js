@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Form from "./components/Form";
 import Listitem from "./components/Listitem";
+import { urlAlphabet } from "nanoid";
 
 function App() {
   const list = [
@@ -28,7 +29,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Pokemon Shopping List</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1024px-International_Pok%C3%A9mon_logo.svg.png"></img>
+      <h1>Shopping List</h1>
       <Form onAddListItem={addListItem} />
       {/* On add list item is the prop name that leads back to the addlistitem
       function*/}
