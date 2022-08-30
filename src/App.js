@@ -41,13 +41,14 @@ function App() {
   //const listLength = shoppingList.length;
 
   // This is the template.
-  function removeListItem(listItem) {
-    setShoppingList(shoppingList.filter((item) => item.id !== listItem.id));
+  function removeListItem(id) {
+    console.log(id);
+    setShoppingList(shoppingList.filter((item) => item.id !== id));
   }
 
   return (
     <div className="App">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1024px-International_Pok%C3%A9mon_logo.svg.png"></img>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1024px-International_Pok%C3%A9mon_logo.svg.png" alt=""></img>
       <h1>Shopping List</h1>
       <Form onAddListItem={addListItem} />
       {/* On add list item is the prop name that leads back to the addlistitem
@@ -60,7 +61,8 @@ function App() {
               item={listItem}
               onRemoveListItem={removeListItem}
               onToggleItem={toggleItem}
-              isChecked={listItem.isDone}
+              isDone={listItem.isDone}
+              id={listItem.id}
             />
           );
         })}

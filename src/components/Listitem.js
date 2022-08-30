@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Listitem.css";
 
 export default function Listitem({ id, item, onRemoveListItem, isDone, onToggleItem }) {
@@ -15,7 +14,7 @@ export default function Listitem({ id, item, onRemoveListItem, isDone, onToggleI
       <input
         onChange={() => onToggleItem(id)}
         type="checkbox"
-        done={isDone} />
+        checked={isDone} />
       {item.name}
       <button className="deletebutton" onClick={() => onRemoveListItem(id)}>X</button>
     </li>
