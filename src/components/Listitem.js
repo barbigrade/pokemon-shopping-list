@@ -17,7 +17,7 @@ export default function Listitem({ id, item, onRemoveListItem, isDone, onToggleI
         type="checkbox"
         done={isDone} />
       {item.name}
-      <button onClick={() => onRemoveListItem(id)}>X</button>
+      <button className="deletebutton" onClick={() => onRemoveListItem(id)}>X</button>
     </li>
   );
 }

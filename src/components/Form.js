@@ -5,7 +5,9 @@ export default function Form({ onAddListItem }) {
     event.preventDefault();
     const form = event.target;
     const input = form.name.value;
+
     const newListItem = { name: input, id: nanoid(), isDone: false };
+
     onAddListItem(newListItem);
   }
 
