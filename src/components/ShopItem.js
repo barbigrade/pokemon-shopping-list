@@ -2,17 +2,17 @@ import { nanoid } from "nanoid";
 import { useState, useEffect } from "react"
 import "./ShopItem.css"
 
-export default function ShopItem({ name, shopInventory, itemURL, onAddListItem }) {
+export default function ShopItem({pokeItem, shopInventory, onAddListItem }) {
   const [itemImage, setItemImage] = useState("");
   const [itemPrice, setItemPrice] = useState();
   const shopItem = {
-    name: name,
+    name: pokeItem.name,
     id: nanoid(),
     isDone: false,
   }
 
   useEffect(() => {
-    fetch(itemURL)
+    fetch(pokeItem.url)
       .then((eifelturm) => eifelturm.json())
       .then((data) => {
         setItemImage(data.sprites.default)
@@ -22,6 +22,6 @@ export default function ShopItem({ name, shopInventory, itemURL, onAddListItem }
 
   return (
 
-    <li className="inventoryitem"><img alt="" src={itemImage} /><p className="itemname">{name}</p><p className="itemprice">{itemPrice}</p><button type="button" onClick={() => onAddListItem(shopItem)}>Add</button></li>
+    <li className="inventoryitem"><img alt="" src={itemImage} /><p className="itemname">{pokeItem.name}</p><p className="itemprice">{itemPrice}</p><button type="button" onClick={() => onAddListItem(shopItem)}>Add</button></li>
   )
 }
