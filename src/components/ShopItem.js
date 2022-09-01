@@ -2,7 +2,8 @@ import { nanoid } from "nanoid";
 import { useState, useEffect } from "react"
 import "./ShopItem.css"
 
-export default function ShopItem({pokeItem, shopInventory, onAddListItem }) {
+export default function ShopItem({pokeItem, onAddListItem }) {
+  const moreInfos = pokeItem.url;
   const [itemImage, setItemImage] = useState("");
   const [itemPrice, setItemPrice] = useState();
   const shopItem = {
@@ -11,14 +12,15 @@ export default function ShopItem({pokeItem, shopInventory, onAddListItem }) {
     isDone: false,
   }
 
+
   useEffect(() => {
-    fetch(pokeItem.url)
+    fetch(moreInfos)
       .then((eifelturm) => eifelturm.json())
       .then((data) => {
         setItemImage(data.sprites.default)
         setItemPrice(data.cost)
       })
-  }, [shopInventory])
+  }, [moreInfos])
 
   return (
 

@@ -82,7 +82,7 @@ function App() {
       <ul className="inventory">
         {itemList.map((item) => {
           return (
-            <ShopItem key={item.name} pokeItem={item} shopInventory={itemList}  onAddListItem={addListItem} />
+            <ShopItem key={item.name} pokeItem={item}  onAddListItem={addListItem} />
           )
         })}
       </ul>
